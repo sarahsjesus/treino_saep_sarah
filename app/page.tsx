@@ -56,7 +56,6 @@ export default function Postar() {
           valor: Number(values.get('valor')),
           quantidade: Number(values.get('quantidade')),
           categoria: values.get('categoria'),
-          unidade_medida: values.get('unidade_medida'),
         }
       : {
           produtos_id: Number(values.get('produtos_id')),
@@ -142,16 +141,6 @@ export default function Postar() {
                   <div className="field">
                     <label htmlFor="categoria">Categoria</label>
                     <input id="categoria" name="categoria" placeholder="Ex.: Mercearia" />
-                  </div>
-                  <div className="field">
-                    <label htmlFor="unidade_medida">Unidade de medida</label>
-                    <select id="unidade_medida" name="unidade_medida" defaultValue="un" required>
-                      <option value="un">Unidade (un)</option>
-                      <option value="kg">Quilograma (kg)</option>
-                      <option value="L">Litro (L)</option>
-                      <option value="cx">Caixa (cx)</option>
-                      <option value="pct">Pacote (pct)</option>
-                    </select>
                   </div>
                 </div>
 
