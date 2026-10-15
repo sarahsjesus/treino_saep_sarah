@@ -52,6 +52,15 @@ app.use(produtosRouter);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+async function startServer() {
+    await db.initializeDatabase();
+
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando na porta ${PORT}`);
+    });
+}
+
+startServer().catch((error) => {
+    console.error('Erro ao inicializar o banco de dados:', error);
+    process.exit(1);
 });

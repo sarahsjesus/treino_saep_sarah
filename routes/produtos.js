@@ -67,21 +67,16 @@ router.get('/produtos-categoria/:categoria', async (req, res) => {
 router.get('/saidas', async (req, res) => {
   try {
     const [rows] = await db.query(`
-      SELECT
-        s.id,
-        p.nome,
-        s.quantidade,
-        s.date
-      FROM movimentacoes
-      INNER JOIN produtos p
-        ON s.produtos_id = p.id
-      ORDER BY s.data_saida DESC
+      SELECT s.id, p.nome, s.quantidade, s.date
+      FROM movimentacoes s
+      INNER JOIN produtos p ON s.produtos_id = p.id
+      WHERE s.tipo = 'SAIDA'
+      ORDER BY s.date DESC
     `);
-
     res.json(rows);
   } catch (error) {
     console.error('Erro ao buscar saídas:', error);
-    res.status(500).json({ error: 'Erro ao buscar saídas' });
+    res.status(500).json({ error: 'Erro ao buscar saídas', details: error.message });
   }
 });
 
