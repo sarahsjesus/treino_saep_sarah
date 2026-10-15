@@ -5,6 +5,15 @@ const db = require('./db');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(cors({ origin: process.env.FRONT_URL }));
+app.get('/', async (req, res) => {
+  try {
+    await db.query('SELECT 1');
+    res.json({ status: 'ok', db: 'conectado' });
+  } catch (err) {
+    res.status(500).json({ status: 'erro', db: err.message });
+  }
+});
 
 // Global error handlers to capture crashes and promise rejections
 process.on('uncaughtException', (err) => {
