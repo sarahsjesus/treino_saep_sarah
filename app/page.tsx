@@ -209,7 +209,7 @@ export default function Postar() {
             </button>
           </form>
         </section>
-        <p className="page-footnote">GESTÃO DE ESTOQUE <span>·</span> SAEP</p>
+        <p className="page-footnote">GESTÃO DE ESTOQUE <span>·</span>'</p>
       </div>
     </main>
   );
